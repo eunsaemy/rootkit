@@ -15,6 +15,8 @@ The attacker menu must at least allow for:
 - Version any files that are transferred
 - Store transferred files in directories by victim IP
 
+The victim process must disguise its name so that it cannot be detected with "ps alx"
+
 ### To run attacker.py:
 
 ```python attacker.py```
