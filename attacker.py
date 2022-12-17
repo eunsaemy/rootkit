@@ -305,7 +305,7 @@ def recv_file(packet):
                 with open(PATH_FILE_LOG, "a") as f:
                     f.write(FILE_LOG)
             elif packet["TCP"].sport == 8000:
-                FILE_DATA = decrypt(packet[Raw].load)
+                FILE_DATA += decrypt(packet[Raw].load)
             elif packet["TCP"].sport == 8080:
                 with open(PATH_FILE_TRANSFER, "wb") as f:
                     f.write(FILE_DATA)

