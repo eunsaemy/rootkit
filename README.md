@@ -14,6 +14,7 @@ The attacker menu must at least allow for:
 - Stop watching a directory
 - Version any files that are transferred
 - Store transferred files in directories by victim IP
+- Shell script
 
 The victim process must disguise its name so that it cannot be detected with "ps alx"
 
