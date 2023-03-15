@@ -1,6 +1,6 @@
 # rootkit
 
-## To create a rootkit with a command and control system.
+## A rootkit with a command and control system
 
 The attacker menu must at least allow for:
 - Start the key logger
